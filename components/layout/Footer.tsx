@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Zap, Mail, Twitter, Linkedin, ArrowRight } from 'lucide-react'
+import { Zap, Mail, ArrowRight } from 'lucide-react'
 import { SITE_NAME, SITE_EMAIL } from '@/lib/constants'
 
 const FOOTER_LINKS = {
@@ -78,26 +78,7 @@ export function Footer() {
                 {SITE_EMAIL}
               </a>
             </div>
-            <div className="flex items-center gap-3 mt-4">
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition-colors"
-                aria-label="Flowtasker sur LinkedIn"
-              >
-                <Linkedin className="w-4 h-4" />
-              </a>
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition-colors"
-                aria-label="Flowtasker sur Twitter/X"
-              >
-                <Twitter className="w-4 h-4" />
-              </a>
-            </div>
+            {/* Réseaux sociaux — à activer quand les profils sont créés */}
           </div>
 
           {/* Produit */}
