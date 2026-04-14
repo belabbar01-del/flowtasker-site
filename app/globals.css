@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 255 255 255;
+    --foreground: 10 15 30;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-white text-slate-800;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  /* Focus visible for accessibility */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-brand-600 rounded;
+  }
+}
+
+@layer components {
+  /* Gradient text utility */
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-600 to-brand-400;
+  }
+
+  /* Card base */
+  .card {
+    @apply bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow duration-300;
+  }
+
+  /* Section padding */
+  .section-padding {
+    @apply py-20 md:py-28;
+  }
+
+  /* Container */
+  .container-main {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+
+@layer utilities {
+  /* Smooth gradient backgrounds */
+  .bg-hero {
+    background: linear-gradient(135deg, #0a0f1e 0%, #0f1b3d 50%, #0a0f1e 100%);
+  }
+
+  .bg-section-alt {
+    @apply bg-slate-50;
+  }
+
+  /* Badge pill */
+  .badge {
+    @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium;
+  }
+}
