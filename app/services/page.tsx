@@ -14,7 +14,8 @@ import { SectionHeader } from '@/components/ui/SectionHeader'
 import { PricingCard } from '@/components/sections/PricingCard'
 import { CTASection } from '@/components/sections/CTASection'
 import { SERVICES, PRICING_PLANS } from '@/lib/constants'
-import { SITE_NAME } from '@/lib/constants'
+import { SITE_NAME, SITE_URL } from '@/lib/constants'
+import { JsonLd } from '@/components/ui/JsonLd'
 
 export const metadata: Metadata = {
   title: 'Services d\'automatisation — Workflows n8n sur mesure',
@@ -56,9 +57,27 @@ const GUARANTEES = [
   'Aucun lock-in, aucun abonnement forcé',
 ]
 
+const servicesJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: `${SITE_NAME} — Services d'automatisation`,
+  url: `${SITE_URL}/services`,
+  serviceType: 'Business Process Automation',
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Automatisation business avec n8n',
+    itemListElement: [
+      { '@type': 'Offer', name: 'Starter — 1 workflow', price: '297', priceCurrency: 'USD' },
+      { '@type': 'Offer', name: 'Growth — jusqu\'à 5 workflows', price: '697', priceCurrency: 'USD' },
+      { '@type': 'Offer', name: 'Enterprise — sur mesure' },
+    ],
+  },
+}
+
 export default function ServicesPage() {
   return (
     <>
+      <JsonLd data={servicesJsonLd} />
       {/* ── Page Hero ───────────────────────────────────────────────────── */}
       <section className="bg-hero text-white pt-36 pb-20 md:pt-44 md:pb-28" aria-labelledby="services-hero-heading">
         <div className="container-main text-center max-w-3xl mx-auto">

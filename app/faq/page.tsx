@@ -5,6 +5,7 @@ import { FAQAccordion } from '@/components/sections/FAQAccordion'
 import { Button } from '@/components/ui/Button'
 import { CTASection } from '@/components/sections/CTASection'
 import { FAQ_ITEMS } from '@/lib/constants'
+import { JsonLd } from '@/components/ui/JsonLd'
 
 export const metadata: Metadata = {
   title: 'FAQ — Vos questions sur l\'automatisation avec Flowtasker',
@@ -28,9 +29,23 @@ const FAQ_CATEGORIES = [
   },
 ]
 
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: FAQ_ITEMS.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
+  })),
+}
+
 export default function FAQPage() {
   return (
     <>
+      <JsonLd data={faqJsonLd} />
       {/* ── Hero ─────────────────────────────────────────────────────── */}
       <section
         className="bg-hero text-white pt-36 pb-20 md:pt-44 md:pb-28"

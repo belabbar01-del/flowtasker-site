@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
 import {
   ArrowRight,
   Zap,
@@ -16,6 +15,7 @@ import {
   Lightbulb,
   CheckCircle2,
 } from 'lucide-react'
+import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/Button'
 import { Badge } from '@/components/ui/Badge'
 import { SectionHeader } from '@/components/ui/SectionHeader'
@@ -23,8 +23,10 @@ import { TrustBand } from '@/components/sections/TrustBand'
 import { CTASection } from '@/components/sections/CTASection'
 import { PricingCard } from '@/components/sections/PricingCard'
 import { FAQAccordion } from '@/components/sections/FAQAccordion'
+import { IntegrationBand } from '@/components/sections/IntegrationBand'
+import { JsonLd } from '@/components/ui/JsonLd'
 import { SERVICES, PROCESS_STEPS, PRICING_PLANS, FAQ_ITEMS, USE_CASES } from '@/lib/constants'
-import { SITE_NAME, SITE_DESCRIPTION } from '@/lib/constants'
+import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from '@/lib/constants'
 
 export const metadata: Metadata = {
   title: `${SITE_NAME} — Automatisation business clé en main avec n8n`,
@@ -76,9 +78,25 @@ const BENEFITS = [
 
 const FAQ_HOME = FAQ_ITEMS.slice(0, 4)
 
+const serviceJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Automatisation business avec n8n',
+  provider: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
+  description: SITE_DESCRIPTION,
+  serviceType: 'Business Process Automation',
+  areaServed: 'Worldwide',
+  offers: [
+    { '@type': 'Offer', name: 'Starter', price: '297', priceCurrency: 'USD' },
+    { '@type': 'Offer', name: 'Growth', price: '697', priceCurrency: 'USD' },
+    { '@type': 'Offer', name: 'Enterprise', description: 'Sur devis' },
+  ],
+}
+
 export default function HomePage() {
   return (
     <>
+      <JsonLd data={serviceJsonLd} />
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
       <section className="bg-hero text-white relative overflow-hidden" aria-labelledby="hero-heading">
         {/* Background grid */}
@@ -137,12 +155,55 @@ export default function HomePage() {
                 <span key={item}>{item}</span>
               ))}
             </div>
+
+            {/* Workflow visual mockup */}
+            <div className="mt-16 max-w-2xl mx-auto">
+              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-sm">
+                <div className="flex items-center gap-2 mb-4">
+                  <div className="w-3 h-3 rounded-full bg-red-400/70" />
+                  <div className="w-3 h-3 rounded-full bg-amber-400/70" />
+                  <div className="w-3 h-3 rounded-full bg-green-400/70" />
+                  <span className="ml-2 text-xs text-slate-500 font-mono">workflow — pipeline-contenu.json</span>
+                </div>
+                <div className="flex items-center gap-2 flex-wrap">
+                  {[
+                    { label: 'Brief Notion', color: 'bg-violet-500' },
+                    { label: '→', color: '' },
+                    { label: 'GPT-4 rédaction', color: 'bg-emerald-500' },
+                    { label: '→', color: '' },
+                    { label: 'Image DALL·E', color: 'bg-blue-500' },
+                    { label: '→', color: '' },
+                    { label: 'WordPress', color: 'bg-sky-500' },
+                    { label: '→', color: '' },
+                    { label: 'LinkedIn', color: 'bg-brand-500' },
+                  ].map((node, i) =>
+                    node.label === '→' ? (
+                      <span key={i} className="text-slate-500 text-sm">→</span>
+                    ) : (
+                      <span
+                        key={i}
+                        className={`inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-semibold text-white ${node.color}`}
+                      >
+                        {node.label}
+                      </span>
+                    )
+                  )}
+                </div>
+                <div className="mt-4 flex items-center gap-2 text-xs text-emerald-400">
+                  <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse-slow" />
+                  Workflow actif — dernière exécution il y a 2 min
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* ── Trust Band ───────────────────────────────────────────────────── */}
       <TrustBand />
+
+      {/* ── Integrations ─────────────────────────────────────────────────── */}
+      <IntegrationBand />
 
       {/* ── Benefits ─────────────────────────────────────────────────────── */}
       <section className="section-padding bg-white" aria-labelledby="benefits-heading">
@@ -313,6 +374,63 @@ export default function HomePage() {
             Tous les projets incluent un audit gratuit, la documentation complète et un support
             post-déploiement. Paiement sécurisé par virement ou carte.
           </p>
+        </div>
+      </section>
+
+      {/* ── Différenciation n8n vs Zapier ────────────────────────────────── */}
+      <section className="section-padding bg-white" aria-labelledby="diff-heading">
+        <div className="container-main">
+          <SectionHeader
+            id="diff-heading"
+            eyebrow="Pourquoi n8n ?"
+            title="Plus puissant que Zapier. Plus abordable que Make."
+            description="n8n n'a pas de limite d'opérations, pas de coût variable qui explose avec le volume, et s'auto-héberge sur votre infrastructure si vous le souhaitez."
+          />
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            {[
+              {
+                label: 'Zapier / Make',
+                features: ['Coût par opération', 'Plafonds d\'usage', 'Infrastructure mutualisée', 'Peu de personnalisation', 'Dépendant des intégrations natives'],
+                highlight: false,
+              },
+              {
+                label: 'n8n avec Flowtasker',
+                features: ['Coût fixe au projet', 'Volume illimité', 'Hébergement au choix', 'Logique métier sur mesure', 'N\'importe quelle API connectée'],
+                highlight: true,
+              },
+              {
+                label: 'Développement custom',
+                features: ['Budget élevé', 'Délais longs', 'Maintenabilité complexe', 'Dépendance développeur', 'Risque sur le long terme'],
+                highlight: false,
+              },
+            ].map((col) => (
+              <div
+                key={col.label}
+                className={cn(
+                  'rounded-2xl p-6 border',
+                  col.highlight
+                    ? 'bg-brand-600 border-brand-500 shadow-xl shadow-brand-600/20'
+                    : 'bg-slate-50 border-slate-200'
+                )}
+              >
+                <p className={`text-base font-bold mb-5 ${col.highlight ? 'text-white' : 'text-slate-700'}`}>
+                  {col.label}
+                </p>
+                <ul className="space-y-3">
+                  {col.features.map((f) => (
+                    <li key={f} className="flex items-center gap-2">
+                      {col.highlight ? (
+                        <CheckCircle2 className="w-4 h-4 text-brand-200 shrink-0" aria-hidden />
+                      ) : (
+                        <span className="w-4 h-4 flex items-center justify-center text-slate-400 shrink-0" aria-hidden>×</span>
+                      )}
+                      <span className={`text-sm ${col.highlight ? 'text-brand-50' : 'text-slate-600'}`}>{f}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
