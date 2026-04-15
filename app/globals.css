@@ -3,16 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --background: 255 255 255;
-    --foreground: 10 15 30;
-  }
-
-  /* Skip navigation link for screen readers */
-  .skip-nav {
-    @apply sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[9999] focus:px-4 focus:py-2 focus:bg-brand-600 focus:text-white focus:rounded-lg focus:text-sm focus:font-semibold;
-  }
-
   html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
@@ -20,7 +10,7 @@
   }
 
   body {
-    @apply bg-white text-slate-800;
+    @apply bg-[#060b18] text-slate-200;
   }
 
   *,
@@ -29,46 +19,123 @@
     box-sizing: border-box;
   }
 
-  /* Focus visible for accessibility */
   :focus-visible {
     @apply outline-2 outline-offset-2 outline-brand-600 rounded;
+  }
+
+  .skip-nav {
+    @apply sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[9999]
+           focus:px-4 focus:py-2 focus:bg-brand-600 focus:text-white focus:rounded-lg
+           focus:text-sm focus:font-semibold;
   }
 }
 
 @layer components {
-  /* Gradient text utility */
+  /* ── Gradient text ─────────────────────────────────────────────────── */
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-600 to-brand-400;
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #93c5fd 0%, #a5b4fc 100%);
+  }
+  .text-gradient-light {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #2563eb 0%, #6366f1 100%);
   }
 
-  /* Card base */
+  /* ── Card systems ──────────────────────────────────────────────────── */
   .card {
-    @apply bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow duration-300;
+    @apply bg-white rounded-2xl border border-slate-100 shadow-sm
+           hover:shadow-md transition-shadow duration-300;
+  }
+  .card-dark {
+    background: rgba(13, 22, 38, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 16px;
+    transition: border-color 0.25s ease, background 0.25s ease;
+  }
+  .card-dark:hover {
+    border-color: rgba(255, 255, 255, 0.13);
+    background: rgba(22, 32, 51, 0.95);
   }
 
-  /* Section padding */
+  /* ── Glass morphism ────────────────────────────────────────────────── */
+  .glass {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+  .glass-strong {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  /* ── Layout primitives ─────────────────────────────────────────────── */
   .section-padding {
     @apply py-20 md:py-28;
   }
-
-  /* Container */
   .container-main {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
-}
-
-@layer utilities {
-  /* Smooth gradient backgrounds */
-  .bg-hero {
-    background: linear-gradient(135deg, #0a0f1e 0%, #0f1b3d 50%, #0a0f1e 100%);
-  }
-
-  .bg-section-alt {
-    @apply bg-slate-50;
-  }
-
-  /* Badge pill */
   .badge {
     @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium;
   }
 }
+
+@layer utilities {
+  /* ── Hero backgrounds ──────────────────────────────────────────────── */
+  .bg-hero {
+    background:
+      radial-gradient(ellipse 110% 60% at 50% -5%, rgba(37, 99, 235, 0.22) 0%, transparent 58%),
+      radial-gradient(ellipse 60% 40% at 80% 20%,  rgba(99, 102, 241, 0.09) 0%, transparent 50%),
+      #060b18;
+  }
+  .bg-hero-section {
+    background:
+      radial-gradient(ellipse 80% 50% at 50% 0%, rgba(37, 99, 235, 0.14) 0%, transparent 55%),
+      #060b18;
+  }
+  .bg-surface   { background: #0d1626; }
+  .bg-surface-2 { background: #162033; }
+  .bg-section-alt { @apply bg-slate-50; }
+
+  /* ── Textures ──────────────────────────────────────────────────────── */
+  .bg-grid-dark {
+    background-image:
+      linear-gradient(rgba(37, 99, 235, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(37, 99, 235, 0.04) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+  .bg-dots-dark {
+    background-image: radial-gradient(rgba(37, 99, 235, 0.12) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
+  /* ── Glow effects ──────────────────────────────────────────────────── */
+  .glow-brand    { box-shadow: 0 0 40px rgba(37, 99, 235, 0.28), 0 0 80px rgba(37, 99, 235, 0.11); }
+  .glow-brand-sm { box-shadow: 0 0 20px rgba(37, 99, 235, 0.22); }
+}
+
+/* ── Scroll-reveal helper ────────────────────────────────────────────────── */
+.fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ── Node entrance animations ────────────────────────────────────────────── */
+@keyframes nodeReveal {
+  from { opacity: 0; transform: translateX(-14px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+.node-1 { animation: nodeReveal 0.5s cubic-bezier(0.22,1,0.36,1) 0.20s both; }
+.node-2 { animation: nodeReveal 0.5s cubic-bezier(0.22,1,0.36,1) 0.36s both; }
+.node-3 { animation: nodeReveal 0.5s cubic-bezier(0.22,1,0.36,1) 0.52s both; }
+.node-4 { animation: nodeReveal 0.5s cubic-bezier(0.22,1,0.36,1) 0.68s both; }
+.node-5 { animation: nodeReveal 0.5s cubic-bezier(0.22,1,0.36,1) 0.84s both; }

@@ -1,40 +1,66 @@
-import { Shield, Clock, Zap, Users } from 'lucide-react'
+import { Clock, Zap, Shield, Rocket } from 'lucide-react'
 
 const METRICS = [
   {
     icon: Clock,
-    value: '−15h',
-    label: 'par semaine économisées en moyenne',
+    value: '15h',
+    unit: '/sem',
+    label: 'économisées en moyenne',
+    color: 'text-brand-400',
+    bg:    'bg-brand-500/10 border-brand-500/20',
   },
   {
     icon: Zap,
     value: '400+',
-    label: 'outils connectables nativement',
+    unit: '',
+    label: 'intégrations natives',
+    color: 'text-violet-400',
+    bg:    'bg-violet-500/10 border-violet-500/20',
   },
   {
     icon: Shield,
     value: '100%',
-    label: 'des workflows livrés avec documentation',
+    unit: '',
+    label: 'des livrables documentés',
+    color: 'text-emerald-400',
+    bg:    'bg-emerald-500/10 border-emerald-500/20',
   },
   {
-    icon: Users,
-    value: '48h',
-    label: 'délai moyen pour un audit livré',
+    icon: Rocket,
+    value: '5j',
+    unit: '',
+    label: 'pour un 1er workflow en prod',
+    color: 'text-amber-400',
+    bg:    'bg-amber-500/10 border-amber-500/20',
   },
 ]
 
 export function TrustBand() {
   return (
-    <section className="bg-slate-50 border-y border-slate-200" aria-label="Chiffres clés">
-      <div className="container-main py-12">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          {METRICS.map((metric) => (
-            <div key={metric.label} className="flex flex-col items-center text-center gap-2">
-              <div className="flex items-center justify-center w-10 h-10 bg-brand-50 rounded-xl mb-1">
-                <metric.icon className="w-5 h-5 text-brand-600" aria-hidden="true" />
+    <section
+      className="py-14 border-b border-white/[0.06]"
+      style={{ background: '#090e1c' }}
+      aria-label="Chiffres clés"
+    >
+      <div className="container-main">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+          {METRICS.map((m) => (
+            <div
+              key={m.label}
+              className="flex flex-col items-center text-center gap-3"
+            >
+              <div className={`w-11 h-11 flex items-center justify-center rounded-xl border ${m.bg}`}>
+                <m.icon className={`w-5 h-5 ${m.color}`} aria-hidden />
               </div>
-              <p className="text-2xl md:text-3xl font-bold text-slate-900">{metric.value}</p>
-              <p className="text-sm text-slate-500 leading-snug max-w-[130px]">{metric.label}</p>
+              <div>
+                <p className={`text-3xl md:text-4xl font-bold tracking-tight ${m.color}`}>
+                  {m.value}
+                  {m.unit && <span className="text-lg font-medium ml-0.5 opacity-70">{m.unit}</span>}
+                </p>
+                <p className="text-sm text-slate-500 mt-1 leading-snug max-w-[130px] mx-auto">
+                  {m.label}
+                </p>
+              </div>
             </div>
           ))}
         </div>
