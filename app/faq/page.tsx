@@ -1,14 +1,14 @@
 import type { Metadata } from 'next'
 import { ArrowRight } from 'lucide-react'
-import { SectionHeader } from '@/components/ui/SectionHeader'
 import { FAQAccordion } from '@/components/sections/FAQAccordion'
 import { Button } from '@/components/ui/Button'
 import { CTASection } from '@/components/sections/CTASection'
 import { FAQ_ITEMS } from '@/lib/constants'
 import { JsonLd } from '@/components/ui/JsonLd'
+import { FadeUp } from '@/components/ui/FadeUp'
 
 export const metadata: Metadata = {
-  title: 'FAQ — Vos questions sur l\'automatisation avec Flowtasker',
+  title: "FAQ — Vos questions sur l'automatisation avec Flowtasker",
   description:
     'Toutes les réponses à vos questions sur nos workflows n8n, la sécurité, les délais, le pricing, la propriété du code et les intégrations disponibles.',
   alternates: { canonical: '/faq' },
@@ -46,15 +46,17 @@ export default function FAQPage() {
   return (
     <>
       <JsonLd data={faqJsonLd} />
+
       {/* ── Hero ─────────────────────────────────────────────────────── */}
       <section
-        className="bg-hero text-white pt-36 pb-20 md:pt-44 md:pb-28"
+        className="bg-hero text-white pt-36 pb-20 md:pt-44 md:pb-28 relative overflow-hidden"
         aria-labelledby="faq-hero-heading"
       >
-        <div className="container-main text-center max-w-2xl mx-auto">
-          <p className="text-sm font-semibold uppercase tracking-widest text-brand-400 mb-4">
+        <div className="absolute inset-0 bg-grid-dark pointer-events-none" aria-hidden />
+        <div className="container-main relative text-center max-w-2xl mx-auto">
+          <div className="inline-flex items-center gap-2 rounded-full bg-brand-500/10 border border-brand-500/20 px-3 py-1.5 text-xs font-semibold text-brand-300 mb-6">
             FAQ
-          </p>
+          </div>
           <h1
             id="faq-hero-heading"
             className="text-4xl md:text-5xl font-bold tracking-tight mb-6"
@@ -70,37 +72,45 @@ export default function FAQPage() {
       </section>
 
       {/* ── FAQ by category ──────────────────────────────────────────── */}
-      <section className="section-padding bg-white" aria-labelledby="faq-content-heading">
+      <section
+        className="section-padding"
+        style={{ background: '#090e1c' }}
+        aria-labelledby="faq-content-heading"
+      >
         <div className="container-main max-w-3xl mx-auto">
           <h2 id="faq-content-heading" className="sr-only">
             Questions fréquentes par catégorie
           </h2>
 
           <div className="space-y-14">
-            {FAQ_CATEGORIES.map((category) => (
-              <div key={category.title}>
-                <h3 className="text-lg font-bold text-slate-900 mb-6 pb-3 border-b border-slate-200">
-                  {category.title}
-                </h3>
-                <FAQAccordion items={category.items} />
-              </div>
+            {FAQ_CATEGORIES.map((category, i) => (
+              <FadeUp key={category.title} delay={i * 80}>
+                <div>
+                  <h3 className="text-lg font-bold text-white mb-6 pb-3 border-b border-white/[0.07]">
+                    {category.title}
+                  </h3>
+                  <FAQAccordion items={category.items} />
+                </div>
+              </FadeUp>
             ))}
           </div>
 
           {/* Still have questions */}
-          <div className="mt-16 text-center p-10 bg-slate-50 rounded-2xl border border-slate-200">
-            <h3 className="text-xl font-bold text-slate-900 mb-3">
-              Vous n'avez pas trouvé votre réponse ?
-            </h3>
-            <p className="text-slate-600 mb-6 leading-relaxed">
-              Contactez-nous directement. Nous répondons en moins de 24h ouvrées. Et si vous
-              souhaitez discuter de votre projet, l'audit initial est gratuit et sans engagement.
-            </p>
-            <Button href="/contact" size="lg" variant="primary">
-              Nous contacter
-              <ArrowRight className="w-4 h-4" />
-            </Button>
-          </div>
+          <FadeUp delay={200}>
+            <div className="mt-16 text-center p-10 card-dark rounded-2xl">
+              <h3 className="text-xl font-bold text-white mb-3">
+                Vous n'avez pas trouvé votre réponse ?
+              </h3>
+              <p className="text-slate-400 mb-6 leading-relaxed">
+                Contactez-nous directement. Nous répondons en moins de 24h ouvrées. Et si vous
+                souhaitez discuter de votre projet, l'audit initial est gratuit et sans engagement.
+              </p>
+              <Button href="/contact" size="lg" variant="primary">
+                Nous contacter
+                <ArrowRight className="w-4 h-4" />
+              </Button>
+            </div>
+          </FadeUp>
         </div>
       </section>
 

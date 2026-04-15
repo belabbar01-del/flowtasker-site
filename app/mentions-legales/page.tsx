@@ -13,38 +13,30 @@ export const metadata: Metadata = {
 
 export default function MentionsLegalesPage() {
   return (
-    <div className="pt-28 pb-20 md:pt-36 md:pb-28 bg-white">
+    <div className="pt-28 pb-20 md:pt-36 md:pb-28" style={{ background: '#060b18' }}>
       <div className="container-main max-w-3xl mx-auto">
-        <h1 className="text-3xl font-bold text-slate-900 mb-2">Mentions légales</h1>
-        <p className="text-sm text-slate-400 mb-12">Dernière mise à jour : avril 2025</p>
+        <h1 className="text-3xl font-bold text-white mb-2">Mentions légales</h1>
+        <p className="text-sm text-slate-500 mb-12">Dernière mise à jour : avril 2025</p>
 
-        <div className="prose prose-slate max-w-none space-y-10">
+        <div className="space-y-10 text-sm text-slate-400 leading-relaxed">
           <section aria-labelledby="editeur-heading">
-            <h2 id="editeur-heading" className="text-xl font-semibold text-slate-900 mb-4">
+            <h2 id="editeur-heading" className="text-xl font-semibold text-white mb-4">
               1. Éditeur du site
             </h2>
-            <div className="text-slate-600 space-y-1.5 text-sm leading-relaxed">
+            <div className="space-y-1.5">
+              <p><strong className="text-slate-300">Raison sociale :</strong> {LEGAL_ENTITY}</p>
+              <p><strong className="text-slate-300">Forme juridique :</strong> Limited Liability Company (LLC)</p>
+              <p><strong className="text-slate-300">Pays :</strong> États-Unis</p>
+              <p><strong className="text-slate-300">Adresse :</strong> Paris, France</p>
               <p>
-                <strong>Raison sociale :</strong> {LEGAL_ENTITY}
-              </p>
-              <p>
-                <strong>Forme juridique :</strong> Limited Liability Company (LLC)
-              </p>
-              <p>
-                <strong>Pays :</strong> États-Unis
-              </p>
-              <p>
-                <strong>Adresse :</strong> Paris, France
-              </p>
-              <p>
-                <strong>Email de contact :</strong>{' '}
-                <a href={`mailto:${SITE_EMAIL}`} className="text-brand-600 hover:underline">
+                <strong className="text-slate-300">Email de contact :</strong>{' '}
+                <a href={`mailto:${SITE_EMAIL}`} className="text-brand-400 hover:text-brand-300 hover:underline transition-colors">
                   {SITE_EMAIL}
                 </a>
               </p>
               <p>
-                <strong>Site web :</strong>{' '}
-                <a href={SITE_URL} className="text-brand-600 hover:underline">
+                <strong className="text-slate-300">Site web :</strong>{' '}
+                <a href={SITE_URL} className="text-brand-400 hover:text-brand-300 hover:underline transition-colors">
                   {SITE_URL}
                 </a>
               </p>
@@ -52,28 +44,21 @@ export default function MentionsLegalesPage() {
           </section>
 
           <section aria-labelledby="hebergement-heading">
-            <h2 id="hebergement-heading" className="text-xl font-semibold text-slate-900 mb-4">
+            <h2 id="hebergement-heading" className="text-xl font-semibold text-white mb-4">
               2. Hébergement
             </h2>
-            <div className="text-slate-600 text-sm leading-relaxed space-y-1.5">
-              <p>
-                <strong>Hébergeur :</strong> Vercel Inc.
-              </p>
-              <p>
-                <strong>Adresse :</strong> 340 Pine Street, Suite 701, San Francisco, CA 94104,
-                États-Unis
-              </p>
-              <p>
-                <strong>Site :</strong> vercel.com
-              </p>
+            <div className="space-y-1.5">
+              <p><strong className="text-slate-300">Hébergeur :</strong> Vercel Inc.</p>
+              <p><strong className="text-slate-300">Adresse :</strong> 340 Pine Street, Suite 701, San Francisco, CA 94104, États-Unis</p>
+              <p><strong className="text-slate-300">Site :</strong> vercel.com</p>
             </div>
           </section>
 
           <section aria-labelledby="propriete-heading">
-            <h2 id="propriete-heading" className="text-xl font-semibold text-slate-900 mb-4">
+            <h2 id="propriete-heading" className="text-xl font-semibold text-white mb-4">
               3. Propriété intellectuelle
             </h2>
-            <p className="text-slate-600 text-sm leading-relaxed">
+            <p>
               L&apos;ensemble du contenu de ce site (textes, images, graphismes, logos, icônes,
               architecture) est la propriété exclusive de {LEGAL_ENTITY}, sauf mention contraire.
               Toute reproduction, représentation, modification ou exploitation totale ou partielle est
@@ -82,10 +67,10 @@ export default function MentionsLegalesPage() {
           </section>
 
           <section aria-labelledby="responsabilite-heading">
-            <h2 id="responsabilite-heading" className="text-xl font-semibold text-slate-900 mb-4">
+            <h2 id="responsabilite-heading" className="text-xl font-semibold text-white mb-4">
               4. Limitation de responsabilité
             </h2>
-            <p className="text-slate-600 text-sm leading-relaxed">
+            <p>
               {LEGAL_ENTITY} s&apos;efforce d&apos;assurer l&apos;exactitude et la mise à jour des
               informations publiées sur ce site. Cependant, nous déclinons toute responsabilité pour
               les erreurs, omissions ou résultats obtenus suite à l&apos;utilisation de ces
@@ -95,13 +80,13 @@ export default function MentionsLegalesPage() {
           </section>
 
           <section aria-labelledby="contact-legal-heading">
-            <h2 id="contact-legal-heading" className="text-xl font-semibold text-slate-900 mb-4">
+            <h2 id="contact-legal-heading" className="text-xl font-semibold text-white mb-4">
               5. Contact
             </h2>
-            <p className="text-slate-600 text-sm leading-relaxed">
+            <p>
               Pour toute question relative aux présentes mentions légales, contactez-nous à
               l&apos;adresse suivante :{' '}
-              <a href={`mailto:${SITE_EMAIL}`} className="text-brand-600 hover:underline">
+              <a href={`mailto:${SITE_EMAIL}`} className="text-brand-400 hover:text-brand-300 hover:underline transition-colors">
                 {SITE_EMAIL}
               </a>
             </p>

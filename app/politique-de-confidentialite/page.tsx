@@ -12,14 +12,14 @@ export const metadata: Metadata = {
 
 export default function PolitiqueConfidentialitePage() {
   return (
-    <div className="pt-28 pb-20 md:pt-36 md:pb-28 bg-white">
+    <div className="pt-28 pb-20 md:pt-36 md:pb-28" style={{ background: '#060b18' }}>
       <div className="container-main max-w-3xl mx-auto">
-        <h1 className="text-3xl font-bold text-slate-900 mb-2">Politique de confidentialité</h1>
-        <p className="text-sm text-slate-400 mb-12">Dernière mise à jour : avril 2025</p>
+        <h1 className="text-3xl font-bold text-white mb-2">Politique de confidentialité</h1>
+        <p className="text-sm text-slate-500 mb-12">Dernière mise à jour : avril 2025</p>
 
-        <div className="space-y-10 text-sm text-slate-600 leading-relaxed">
+        <div className="space-y-10 text-sm text-slate-400 leading-relaxed">
           <section aria-labelledby="intro-heading">
-            <h2 id="intro-heading" className="text-xl font-semibold text-slate-900 mb-4">
+            <h2 id="intro-heading" className="text-xl font-semibold text-white mb-4">
               1. Introduction
             </h2>
             <p>
@@ -31,13 +31,13 @@ export default function PolitiqueConfidentialitePage() {
           </section>
 
           <section aria-labelledby="collecte-heading">
-            <h2 id="collecte-heading" className="text-xl font-semibold text-slate-900 mb-4">
+            <h2 id="collecte-heading" className="text-xl font-semibold text-white mb-4">
               2. Données collectées
             </h2>
             <p className="mb-3">
               Nous collectons uniquement les données que vous nous transmettez volontairement, via :
             </p>
-            <ul className="list-disc list-inside space-y-2 pl-2">
+            <ul className="list-disc list-inside space-y-2 pl-2 text-slate-400">
               <li>
                 Le formulaire de contact : prénom, nom, email, entreprise, téléphone (optionnel),
                 sujet et message.
@@ -51,23 +51,23 @@ export default function PolitiqueConfidentialitePage() {
           </section>
 
           <section aria-labelledby="finalites-heading">
-            <h2 id="finalites-heading" className="text-xl font-semibold text-slate-900 mb-4">
+            <h2 id="finalites-heading" className="text-xl font-semibold text-white mb-4">
               3. Finalités du traitement
             </h2>
             <p>Vos données sont utilisées exclusivement pour :</p>
-            <ul className="list-disc list-inside space-y-2 pl-2 mt-3">
+            <ul className="list-disc list-inside space-y-2 pl-2 mt-3 text-slate-400">
               <li>Répondre à votre demande de contact ou d&apos;audit</li>
               <li>Établir un devis ou une proposition commerciale</li>
               <li>Assurer le suivi de notre relation commerciale</li>
             </ul>
             <p className="mt-3">
-              <strong>Base légale :</strong> consentement (formulaire de contact) et intérêt
+              <strong className="text-slate-300">Base légale :</strong> consentement (formulaire de contact) et intérêt
               légitime (suivi commercial).
             </p>
           </section>
 
           <section aria-labelledby="retention-heading">
-            <h2 id="retention-heading" className="text-xl font-semibold text-slate-900 mb-4">
+            <h2 id="retention-heading" className="text-xl font-semibold text-white mb-4">
               4. Conservation des données
             </h2>
             <p>
@@ -78,7 +78,7 @@ export default function PolitiqueConfidentialitePage() {
           </section>
 
           <section aria-labelledby="partage-heading">
-            <h2 id="partage-heading" className="text-xl font-semibold text-slate-900 mb-4">
+            <h2 id="partage-heading" className="text-xl font-semibold text-white mb-4">
               5. Partage des données
             </h2>
             <p>
@@ -90,14 +90,14 @@ export default function PolitiqueConfidentialitePage() {
           </section>
 
           <section aria-labelledby="droits-heading">
-            <h2 id="droits-heading" className="text-xl font-semibold text-slate-900 mb-4">
+            <h2 id="droits-heading" className="text-xl font-semibold text-white mb-4">
               6. Vos droits
             </h2>
             <p className="mb-3">
               Conformément au RGPD (pour les résidents européens) et aux lois applicables, vous
               disposez des droits suivants :
             </p>
-            <ul className="list-disc list-inside space-y-2 pl-2">
+            <ul className="list-disc list-inside space-y-2 pl-2 text-slate-400">
               <li>Droit d&apos;accès à vos données personnelles</li>
               <li>Droit de rectification des données inexactes</li>
               <li>Droit à l&apos;effacement (&ldquo;droit à l&apos;oubli&rdquo;)</li>
@@ -107,14 +107,14 @@ export default function PolitiqueConfidentialitePage() {
             </ul>
             <p className="mt-4">
               Pour exercer ces droits, contactez-nous à :{' '}
-              <a href={`mailto:${SITE_EMAIL}`} className="text-brand-600 hover:underline">
+              <a href={`mailto:${SITE_EMAIL}`} className="text-brand-400 hover:text-brand-300 hover:underline transition-colors">
                 {SITE_EMAIL}
               </a>
             </p>
           </section>
 
           <section aria-labelledby="securite-data-heading">
-            <h2 id="securite-data-heading" className="text-xl font-semibold text-slate-900 mb-4">
+            <h2 id="securite-data-heading" className="text-xl font-semibold text-white mb-4">
               7. Sécurité des données
             </h2>
             <p>
@@ -126,7 +126,7 @@ export default function PolitiqueConfidentialitePage() {
           </section>
 
           <section aria-labelledby="cookies-heading">
-            <h2 id="cookies-heading" className="text-xl font-semibold text-slate-900 mb-4">
+            <h2 id="cookies-heading" className="text-xl font-semibold text-white mb-4">
               8. Cookies
             </h2>
             <p>
@@ -137,13 +137,13 @@ export default function PolitiqueConfidentialitePage() {
           </section>
 
           <section aria-labelledby="contact-privacy-heading">
-            <h2 id="contact-privacy-heading" className="text-xl font-semibold text-slate-900 mb-4">
+            <h2 id="contact-privacy-heading" className="text-xl font-semibold text-white mb-4">
               9. Contact & réclamations
             </h2>
             <p>
               Pour toute question relative à cette politique ou pour exercer vos droits, contactez
               notre responsable de traitement à :{' '}
-              <a href={`mailto:${SITE_EMAIL}`} className="text-brand-600 hover:underline">
+              <a href={`mailto:${SITE_EMAIL}`} className="text-brand-400 hover:text-brand-300 hover:underline transition-colors">
                 {SITE_EMAIL}
               </a>
             </p>
