@@ -1,9 +1,11 @@
 import type { Metadata } from 'next'
-import { SITE_NAME, SITE_EMAIL } from '@/lib/constants'
+import { SITE_EMAIL } from '@/lib/constants'
+
+const LEGAL_ENTITY = 'Autom8Flow LLC'
 
 export const metadata: Metadata = {
   title: 'Politique de confidentialité',
-  description: 'Politique de confidentialité et traitement des données personnelles de Flowtasker LLC.',
+  description: `Politique de confidentialité et traitement des données personnelles de ${LEGAL_ENTITY}.`,
   robots: { index: false, follow: false },
   alternates: { canonical: '/politique-de-confidentialite' },
 }
@@ -21,10 +23,10 @@ export default function PolitiqueConfidentialitePage() {
               1. Introduction
             </h2>
             <p>
-              {SITE_NAME} LLC (&ldquo;nous&rdquo;, &ldquo;notre&rdquo;, &ldquo;nos&rdquo;) s'engage à
-              protéger la vie privée des personnes qui utilisent ce site web. Cette politique explique
-              comment nous collectons, utilisons et protégeons vos données personnelles lorsque vous
-              interagissez avec flowtasker.com.
+              {LEGAL_ENTITY} (&ldquo;nous&rdquo;, &ldquo;notre&rdquo;, &ldquo;nos&rdquo;)
+              s&apos;engage à protéger la vie privée des personnes qui utilisent ce site web. Cette
+              politique explique comment nous collectons, utilisons et protégeons vos données
+              personnelles lorsque vous interagissez avec notre site.
             </p>
           </section>
 
@@ -35,18 +37,16 @@ export default function PolitiqueConfidentialitePage() {
             <p className="mb-3">
               Nous collectons uniquement les données que vous nous transmettez volontairement, via :
             </p>
-            <ul className="list-disc list-inside space-y-2 text-slate-600 pl-2">
+            <ul className="list-disc list-inside space-y-2 pl-2">
               <li>
                 Le formulaire de contact : prénom, nom, email, entreprise, téléphone (optionnel),
                 sujet et message.
               </li>
-              <li>
-                Les échanges par email : données contenues dans votre correspondance.
-              </li>
+              <li>Les échanges par email : données contenues dans votre correspondance.</li>
             </ul>
             <p className="mt-3">
-              Nous ne collectons pas de données de navigation, n'utilisons pas de cookies de
-              traçage tiers et n'installons aucun outil de tracking publicitaire.
+              Nous ne collectons pas de données de navigation, n&apos;utilisons pas de cookies de
+              traçage tiers et n&apos;installons aucun outil de tracking publicitaire.
             </p>
           </section>
 
@@ -55,8 +55,8 @@ export default function PolitiqueConfidentialitePage() {
               3. Finalités du traitement
             </h2>
             <p>Vos données sont utilisées exclusivement pour :</p>
-            <ul className="list-disc list-inside space-y-2 text-slate-600 pl-2 mt-3">
-              <li>Répondre à votre demande de contact ou d'audit</li>
+            <ul className="list-disc list-inside space-y-2 pl-2 mt-3">
+              <li>Répondre à votre demande de contact ou d&apos;audit</li>
               <li>Établir un devis ou une proposition commerciale</li>
               <li>Assurer le suivi de notre relation commerciale</li>
             </ul>
@@ -97,12 +97,12 @@ export default function PolitiqueConfidentialitePage() {
               Conformément au RGPD (pour les résidents européens) et aux lois applicables, vous
               disposez des droits suivants :
             </p>
-            <ul className="list-disc list-inside space-y-2 text-slate-600 pl-2">
-              <li>Droit d'accès à vos données personnelles</li>
+            <ul className="list-disc list-inside space-y-2 pl-2">
+              <li>Droit d&apos;accès à vos données personnelles</li>
               <li>Droit de rectification des données inexactes</li>
-              <li>Droit à l'effacement (&ldquo;droit à l'oubli&rdquo;)</li>
+              <li>Droit à l&apos;effacement (&ldquo;droit à l&apos;oubli&rdquo;)</li>
               <li>Droit à la portabilité</li>
-              <li>Droit d'opposition au traitement</li>
+              <li>Droit d&apos;opposition au traitement</li>
               <li>Droit de retirer votre consentement à tout moment</li>
             </ul>
             <p className="mt-4">
@@ -130,9 +130,9 @@ export default function PolitiqueConfidentialitePage() {
               8. Cookies
             </h2>
             <p>
-              Ce site n'utilise pas de cookies de traçage tiers ni de cookies publicitaires. Des
-              cookies techniques strictement nécessaires au fonctionnement du site (session, sécurité)
-              peuvent être utilisés. Ils ne nécessitent pas votre consentement.
+              Ce site n&apos;utilise pas de cookies de traçage tiers ni de cookies publicitaires.
+              Des cookies techniques strictement nécessaires au fonctionnement du site (session,
+              sécurité) peuvent être utilisés. Ils ne nécessitent pas votre consentement.
             </p>
           </section>
 
@@ -149,8 +149,8 @@ export default function PolitiqueConfidentialitePage() {
             </p>
             <p className="mt-3">
               Si vous estimez que vos droits ne sont pas respectés, vous pouvez introduire une
-              réclamation auprès de l'autorité de contrôle compétente dans votre pays (en France :
-              la CNIL — www.cnil.fr).
+              réclamation auprès de l&apos;autorité de contrôle compétente dans votre pays (en
+              France : la CNIL — www.cnil.fr).
             </p>
           </section>
         </div>

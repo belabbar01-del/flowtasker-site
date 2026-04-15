@@ -2,7 +2,7 @@ import type { NavItem, Service, Step, PricingPlan, FAQItem } from './types'
 
 export const SITE_NAME = 'Flowtasker'
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://flowtasker.com'
-export const SITE_EMAIL = 'hello@flowtasker.com'
+export const SITE_EMAIL = 'belabbar01@gmail.com'
 export const SITE_DESCRIPTION =
   "Flowtasker automatise vos tâches répétitives, connecte vos outils et fluidifie vos opérations grâce à des workflows n8n sur mesure — pour que vous puissiez vous concentrer sur ce qui compte vraiment."
 

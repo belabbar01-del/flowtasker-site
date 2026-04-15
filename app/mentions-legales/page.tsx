@@ -1,9 +1,12 @@
 import type { Metadata } from 'next'
-import { SITE_NAME, SITE_EMAIL, SITE_URL } from '@/lib/constants'
+import { SITE_EMAIL, SITE_URL } from '@/lib/constants'
+
+// Entité légale distincte de la marque commerciale Flowtasker
+const LEGAL_ENTITY = 'Autom8Flow LLC'
 
 export const metadata: Metadata = {
   title: 'Mentions légales',
-  description: 'Mentions légales de Flowtasker LLC.',
+  description: `Mentions légales de ${LEGAL_ENTITY}, éditeur du site Flowtasker.`,
   robots: { index: false, follow: false },
   alternates: { canonical: '/mentions-legales' },
 }
@@ -20,33 +23,16 @@ export default function MentionsLegalesPage() {
             <h2 id="editeur-heading" className="text-xl font-semibold text-slate-900 mb-4">
               1. Éditeur du site
             </h2>
-            <div className="text-slate-600 space-y-1 text-sm leading-relaxed">
+            <div className="text-slate-600 space-y-1.5 text-sm leading-relaxed">
               <p>
-                <strong>Raison sociale :</strong> {SITE_NAME} LLC
+                <strong>Raison sociale :</strong> {LEGAL_ENTITY}
               </p>
-              {/*
-                PLACEHOLDER — À compléter avant mise en ligne :
-                - Numéro de constitution LLC (État d'incorporation)
-                - Adresse du siège social
-                - Numéro de téléphone le cas échéant
-              */}
               <p>
                 <strong>Forme juridique :</strong> Limited Liability Company (LLC)
               </p>
               <p>
-                <strong>Pays d'incorporation :</strong> États-Unis{' '}
-                <em className="text-slate-400">[État à préciser]</em>
-              </p>
-              <p>
-                <strong>Adresse :</strong>{' '}
-                <em className="text-slate-400">[Adresse à compléter]</em>
-              </p>
-              <p>
                 <strong>Email de contact :</strong>{' '}
-                <a
-                  href={`mailto:${SITE_EMAIL}`}
-                  className="text-brand-600 hover:underline"
-                >
+                <a href={`mailto:${SITE_EMAIL}`} className="text-brand-600 hover:underline">
                   {SITE_EMAIL}
                 </a>
               </p>
@@ -63,17 +49,16 @@ export default function MentionsLegalesPage() {
             <h2 id="hebergement-heading" className="text-xl font-semibold text-slate-900 mb-4">
               2. Hébergement
             </h2>
-            <div className="text-slate-600 text-sm leading-relaxed space-y-1">
-              {/* PLACEHOLDER — À adapter selon votre hébergeur */}
+            <div className="text-slate-600 text-sm leading-relaxed space-y-1.5">
               <p>
                 <strong>Hébergeur :</strong> Vercel Inc.
               </p>
               <p>
-                <strong>Adresse :</strong> 340 Pine Street, Suite 701, San Francisco, CA 94104, États-Unis
+                <strong>Adresse :</strong> 340 Pine Street, Suite 701, San Francisco, CA 94104,
+                États-Unis
               </p>
               <p>
-                <strong>Site :</strong>{' '}
-                <span className="text-slate-400">vercel.com</span>
+                <strong>Site :</strong> vercel.com
               </p>
             </div>
           </section>
@@ -83,8 +68,8 @@ export default function MentionsLegalesPage() {
               3. Propriété intellectuelle
             </h2>
             <p className="text-slate-600 text-sm leading-relaxed">
-              L'ensemble du contenu de ce site (textes, images, graphismes, logos, icônes,
-              architecture) est la propriété exclusive de {SITE_NAME} LLC, sauf mention contraire.
+              L&apos;ensemble du contenu de ce site (textes, images, graphismes, logos, icônes,
+              architecture) est la propriété exclusive de {LEGAL_ENTITY}, sauf mention contraire.
               Toute reproduction, représentation, modification ou exploitation totale ou partielle est
               interdite sans autorisation écrite préalable.
             </p>
@@ -95,10 +80,11 @@ export default function MentionsLegalesPage() {
               4. Limitation de responsabilité
             </h2>
             <p className="text-slate-600 text-sm leading-relaxed">
-              {SITE_NAME} LLC s'efforce d'assurer l'exactitude et la mise à jour des informations
-              publiées sur ce site. Cependant, nous déclinons toute responsabilité pour les erreurs,
-              omissions ou résultats obtenus suite à l'utilisation de ces informations. Les liens
-              vers des sites tiers ne constituent pas une validation de leur contenu.
+              {LEGAL_ENTITY} s&apos;efforce d&apos;assurer l&apos;exactitude et la mise à jour des
+              informations publiées sur ce site. Cependant, nous déclinons toute responsabilité pour
+              les erreurs, omissions ou résultats obtenus suite à l&apos;utilisation de ces
+              informations. Les liens vers des sites tiers ne constituent pas une validation de leur
+              contenu.
             </p>
           </section>
 
@@ -107,8 +93,8 @@ export default function MentionsLegalesPage() {
               5. Contact
             </h2>
             <p className="text-slate-600 text-sm leading-relaxed">
-              Pour toute question relative aux présentes mentions légales, contactez-nous à l'adresse
-              suivante :{' '}
+              Pour toute question relative aux présentes mentions légales, contactez-nous à
+              l&apos;adresse suivante :{' '}
               <a href={`mailto:${SITE_EMAIL}`} className="text-brand-600 hover:underline">
                 {SITE_EMAIL}
               </a>

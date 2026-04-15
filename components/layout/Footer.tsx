@@ -142,7 +142,7 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-slate-500">
-            © {currentYear} {SITE_NAME} LLC. Tous droits réservés.
+            © {currentYear} {SITE_NAME}. Tous droits réservés.
           </p>
           <div className="flex items-center gap-4 text-xs text-slate-500">
             <Link href="/mentions-legales" className="hover:text-slate-300 transition-colors">
