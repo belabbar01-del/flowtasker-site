@@ -1,4 +1,4 @@
-import type { NavItem, Service, Step, PricingPlan, FAQItem } from './types'
+import type { NavItem, Service, Step, PricingPlan, FAQItem, Testimonial } from './types'
 
 export const SITE_NAME = 'Flowtasker'
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://flowtasker.com'
@@ -210,5 +210,33 @@ export const USE_CASES = [
     description:
       "Un nouvel inscrit déclenche la création du compte CRM, la séquence d'emails de bienvenue, l'invitation Slack, l'attribution d'un onboarding manager et le suivi NPS.",
     metrics: ['Onboarding 100% automatisé', '+40% de taux d\'activation'],
+  },
+]
+
+// ── Testimonials (demo — à remplacer par des témoignages réels avant publication) ──
+export const TESTIMONIALS: Testimonial[] = [
+  {
+    name: 'Sophie L.',
+    role: 'Directrice e-commerce',
+    company: 'BoutiqueMaison.fr',
+    content:
+      'En 3 semaines, Flowtasker a automatisé notre traitement de commandes de bout en bout. On a éliminé 4 heures de saisie manuelle par jour. Le ROI a été immédiat dès le premier mois.',
+    avatar: 'SL',
+  },
+  {
+    name: 'Thomas D.',
+    role: 'Directeur digital',
+    company: 'Agence Orbit',
+    content:
+      "Nous produisions 4 articles SEO par semaine, manuellement. Aujourd'hui notre workflow n8n en génère 20 depuis nos briefs Notion. La qualité est là, le temps de travail divisé par cinq.",
+    avatar: 'TD',
+  },
+  {
+    name: 'Maxime R.',
+    role: 'Co-fondateur',
+    company: 'Syncwell',
+    content:
+      "L'audit a pris 30 minutes, le workflow d'onboarding était en production en 4 jours. 100 % de nos nouveaux clients sont maintenant onboardés automatiquement. C'est transformationnel.",
+    avatar: 'MR',
   },
 ]

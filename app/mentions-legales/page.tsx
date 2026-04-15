@@ -31,6 +31,12 @@ export default function MentionsLegalesPage() {
                 <strong>Forme juridique :</strong> Limited Liability Company (LLC)
               </p>
               <p>
+                <strong>Pays :</strong> États-Unis
+              </p>
+              <p>
+                <strong>Adresse :</strong> Paris, France
+              </p>
+              <p>
                 <strong>Email de contact :</strong>{' '}
                 <a href={`mailto:${SITE_EMAIL}`} className="text-brand-600 hover:underline">
                   {SITE_EMAIL}

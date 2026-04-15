@@ -24,6 +24,7 @@ import { CTASection } from '@/components/sections/CTASection'
 import { PricingCard } from '@/components/sections/PricingCard'
 import { FAQAccordion } from '@/components/sections/FAQAccordion'
 import { IntegrationBand } from '@/components/sections/IntegrationBand'
+import { TestimonialsSection } from '@/components/sections/TestimonialsSection'
 import { JsonLd } from '@/components/ui/JsonLd'
 import { SERVICES, PROCESS_STEPS, PRICING_PLANS, FAQ_ITEMS, USE_CASES } from '@/lib/constants'
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from '@/lib/constants'
@@ -356,6 +357,9 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── Testimonials ─────────────────────────────────────────────────── */}
+      <TestimonialsSection />
+
       {/* ── Pricing ──────────────────────────────────────────────────────── */}
       <section className="section-padding bg-white" id="pricing" aria-labelledby="pricing-heading">
         <div className="container-main">
@@ -378,7 +382,7 @@ export default function HomePage() {
       </section>
 
       {/* ── Différenciation n8n vs Zapier ────────────────────────────────── */}
-      <section className="section-padding bg-white" aria-labelledby="diff-heading">
+      <section className="section-padding bg-section-alt" aria-labelledby="diff-heading">
         <div className="container-main">
           <SectionHeader
             id="diff-heading"
@@ -435,7 +439,7 @@ export default function HomePage() {
       </section>
 
       {/* ── FAQ ──────────────────────────────────────────────────────────── */}
-      <section className="section-padding bg-section-alt" aria-labelledby="faq-heading">
+      <section className="section-padding bg-white" aria-labelledby="faq-heading">
         <div className="container-main">
           <div className="max-w-3xl mx-auto">
             <SectionHeader
