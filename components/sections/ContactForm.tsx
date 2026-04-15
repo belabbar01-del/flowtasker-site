@@ -29,13 +29,18 @@ const contactSchema = z.object({
 type ContactFormValues = z.infer<typeof contactSchema>
 
 const SUBJECT_OPTIONS = [
-  'Demande d\'audit gratuit',
+  "Demande d'audit gratuit",
   'Renseignements sur les services',
   'Demande de devis',
   'Support technique',
   'Partenariat',
   'Autre',
 ]
+
+const inputBase =
+  'w-full px-4 py-3 rounded-xl border text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent placeholder:text-slate-500'
+const inputNormal = 'bg-white/[0.06] border-white/[0.12] text-white hover:border-white/[0.20]'
+const inputError  = 'bg-red-500/10 border-red-500/40 text-white'
 
 export function ContactForm() {
   const [status, setStatus] = useState<FormStatus>('idle')
@@ -83,18 +88,18 @@ export function ContactForm() {
 
   if (status === 'success') {
     return (
-      <div className="flex flex-col items-center justify-center text-center py-16 gap-4 animate-fade-in">
-        <div className="w-16 h-16 flex items-center justify-center bg-emerald-50 rounded-full">
-          <CheckCircle className="w-8 h-8 text-emerald-500" />
+      <div className="flex flex-col items-center justify-center text-center py-16 gap-4">
+        <div className="w-16 h-16 flex items-center justify-center bg-emerald-500/15 border border-emerald-500/25 rounded-full">
+          <CheckCircle className="w-8 h-8 text-emerald-400" />
         </div>
-        <h3 className="text-xl font-bold text-slate-900">Message envoyé !</h3>
-        <p className="text-slate-600 max-w-sm">
-          Merci pour votre message. Nous vous répondons sous 24h ouvrées. En attendant, n'hésitez
-          pas à explorer nos services.
+        <h3 className="text-xl font-bold text-white">Message envoyé !</h3>
+        <p className="text-slate-400 max-w-sm">
+          Merci pour votre message. Nous vous répondons sous 24h ouvrées. En attendant,
+          n'hésitez pas à explorer nos services.
         </p>
         <button
           onClick={() => setStatus('idle')}
-          className="mt-2 text-sm text-brand-600 hover:text-brand-700 font-medium underline underline-offset-2"
+          className="mt-2 text-sm text-brand-400 hover:text-brand-300 font-medium underline underline-offset-2 transition-colors"
         >
           Envoyer un autre message
         </button>
@@ -112,50 +117,42 @@ export function ContactForm() {
       {/* Name row */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label htmlFor="firstName" className="block text-sm font-medium text-slate-700 mb-1.5">
-            Prénom <span className="text-red-500" aria-hidden>*</span>
+          <label htmlFor="firstName" className="block text-sm font-medium text-slate-300 mb-1.5">
+            Prénom <span className="text-red-400" aria-hidden>*</span>
           </label>
           <input
             id="firstName"
             type="text"
             autoComplete="given-name"
             {...register('firstName')}
-            className={cn(
-              'w-full px-4 py-3 rounded-xl border text-slate-900 text-sm bg-white transition-colors',
-              'placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent',
-              errors.firstName ? 'border-red-400 bg-red-50' : 'border-slate-200 hover:border-slate-300'
-            )}
+            className={cn(inputBase, errors.firstName ? inputError : inputNormal)}
             placeholder="Jean"
             aria-invalid={!!errors.firstName}
             aria-describedby={errors.firstName ? 'firstName-error' : undefined}
           />
           {errors.firstName && (
-            <p id="firstName-error" className="mt-1 text-xs text-red-600" role="alert">
+            <p id="firstName-error" className="mt-1 text-xs text-red-400" role="alert">
               {errors.firstName.message}
             </p>
           )}
         </div>
 
         <div>
-          <label htmlFor="lastName" className="block text-sm font-medium text-slate-700 mb-1.5">
-            Nom <span className="text-red-500" aria-hidden>*</span>
+          <label htmlFor="lastName" className="block text-sm font-medium text-slate-300 mb-1.5">
+            Nom <span className="text-red-400" aria-hidden>*</span>
           </label>
           <input
             id="lastName"
             type="text"
             autoComplete="family-name"
             {...register('lastName')}
-            className={cn(
-              'w-full px-4 py-3 rounded-xl border text-slate-900 text-sm bg-white transition-colors',
-              'placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent',
-              errors.lastName ? 'border-red-400 bg-red-50' : 'border-slate-200 hover:border-slate-300'
-            )}
+            className={cn(inputBase, errors.lastName ? inputError : inputNormal)}
             placeholder="Dupont"
             aria-invalid={!!errors.lastName}
             aria-describedby={errors.lastName ? 'lastName-error' : undefined}
           />
           {errors.lastName && (
-            <p id="lastName-error" className="mt-1 text-xs text-red-600" role="alert">
+            <p id="lastName-error" className="mt-1 text-xs text-red-400" role="alert">
               {errors.lastName.message}
             </p>
           )}
@@ -164,34 +161,30 @@ export function ContactForm() {
 
       {/* Email */}
       <div>
-        <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-1.5">
-          Email professionnel <span className="text-red-500" aria-hidden>*</span>
+        <label htmlFor="email" className="block text-sm font-medium text-slate-300 mb-1.5">
+          Email professionnel <span className="text-red-400" aria-hidden>*</span>
         </label>
         <input
           id="email"
           type="email"
           autoComplete="email"
           {...register('email')}
-          className={cn(
-            'w-full px-4 py-3 rounded-xl border text-slate-900 text-sm bg-white transition-colors',
-            'placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent',
-            errors.email ? 'border-red-400 bg-red-50' : 'border-slate-200 hover:border-slate-300'
-          )}
+          className={cn(inputBase, errors.email ? inputError : inputNormal)}
           placeholder="jean.dupont@entreprise.com"
           aria-invalid={!!errors.email}
           aria-describedby={errors.email ? 'email-error' : undefined}
         />
         {errors.email && (
-          <p id="email-error" className="mt-1 text-xs text-red-600" role="alert">
+          <p id="email-error" className="mt-1 text-xs text-red-400" role="alert">
             {errors.email.message}
           </p>
         )}
       </div>
 
-      {/* Company + Phone row */}
+      {/* Company + Phone */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label htmlFor="company" className="block text-sm font-medium text-slate-700 mb-1.5">
+          <label htmlFor="company" className="block text-sm font-medium text-slate-300 mb-1.5">
             Entreprise
           </label>
           <input
@@ -199,12 +192,12 @@ export function ContactForm() {
             type="text"
             autoComplete="organization"
             {...register('company')}
-            className="w-full px-4 py-3 rounded-xl border border-slate-200 hover:border-slate-300 text-slate-900 text-sm bg-white transition-colors placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
+            className={cn(inputBase, inputNormal)}
             placeholder="Mon Entreprise SAS"
           />
         </div>
         <div>
-          <label htmlFor="phone" className="block text-sm font-medium text-slate-700 mb-1.5">
+          <label htmlFor="phone" className="block text-sm font-medium text-slate-300 mb-1.5">
             Téléphone
           </label>
           <input
@@ -212,15 +205,11 @@ export function ContactForm() {
             type="tel"
             autoComplete="tel"
             {...register('phone')}
-            className={cn(
-              'w-full px-4 py-3 rounded-xl border text-slate-900 text-sm bg-white transition-colors',
-              'placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent',
-              errors.phone ? 'border-red-400 bg-red-50' : 'border-slate-200 hover:border-slate-300'
-            )}
+            className={cn(inputBase, errors.phone ? inputError : inputNormal)}
             placeholder="+33 6 00 00 00 00"
           />
           {errors.phone && (
-            <p className="mt-1 text-xs text-red-600" role="alert">
+            <p className="mt-1 text-xs text-red-400" role="alert">
               {errors.phone.message}
             </p>
           )}
@@ -229,31 +218,31 @@ export function ContactForm() {
 
       {/* Subject */}
       <div>
-        <label htmlFor="subject" className="block text-sm font-medium text-slate-700 mb-1.5">
-          Sujet <span className="text-red-500" aria-hidden>*</span>
+        <label htmlFor="subject" className="block text-sm font-medium text-slate-300 mb-1.5">
+          Sujet <span className="text-red-400" aria-hidden>*</span>
         </label>
         <select
           id="subject"
           {...register('subject')}
           defaultValue=""
           className={cn(
-            'w-full px-4 py-3 rounded-xl border text-slate-900 text-sm bg-white transition-colors',
-            'focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent',
-            errors.subject ? 'border-red-400 bg-red-50' : 'border-slate-200 hover:border-slate-300'
+            inputBase,
+            errors.subject ? inputError : inputNormal,
+            'bg-[#0d1626]'
           )}
           aria-invalid={!!errors.subject}
         >
-          <option value="" disabled>
+          <option value="" disabled className="bg-[#0d1626] text-slate-400">
             Choisissez un sujet…
           </option>
           {SUBJECT_OPTIONS.map((opt) => (
-            <option key={opt} value={opt}>
+            <option key={opt} value={opt} className="bg-[#0d1626] text-white">
               {opt}
             </option>
           ))}
         </select>
         {errors.subject && (
-          <p className="mt-1 text-xs text-red-600" role="alert">
+          <p className="mt-1 text-xs text-red-400" role="alert">
             {errors.subject.message}
           </p>
         )}
@@ -261,24 +250,24 @@ export function ContactForm() {
 
       {/* Message */}
       <div>
-        <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-1.5">
-          Message <span className="text-red-500" aria-hidden>*</span>
+        <label htmlFor="message" className="block text-sm font-medium text-slate-300 mb-1.5">
+          Message <span className="text-red-400" aria-hidden>*</span>
         </label>
         <textarea
           id="message"
           rows={5}
           {...register('message')}
           className={cn(
-            'w-full px-4 py-3 rounded-xl border text-slate-900 text-sm bg-white transition-colors resize-y min-h-[120px]',
-            'placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent',
-            errors.message ? 'border-red-400 bg-red-50' : 'border-slate-200 hover:border-slate-300'
+            inputBase,
+            'resize-y min-h-[120px]',
+            errors.message ? inputError : inputNormal
           )}
           placeholder="Décrivez vos besoins, vos outils actuels, les tâches que vous souhaitez automatiser…"
           aria-invalid={!!errors.message}
           aria-describedby={errors.message ? 'message-error' : undefined}
         />
         {errors.message && (
-          <p id="message-error" className="mt-1 text-xs text-red-600" role="alert">
+          <p id="message-error" className="mt-1 text-xs text-red-400" role="alert">
             {errors.message.message}
           </p>
         )}
@@ -290,24 +279,24 @@ export function ContactForm() {
           id="consent"
           type="checkbox"
           {...register('consent')}
-          className="mt-0.5 w-4 h-4 rounded border-slate-300 text-brand-600 focus:ring-brand-500 cursor-pointer"
+          className="mt-0.5 w-4 h-4 rounded border-white/20 bg-white/[0.06] text-brand-600 focus:ring-brand-500 cursor-pointer"
           aria-invalid={!!errors.consent}
         />
-        <label htmlFor="consent" className="text-sm text-slate-600 leading-relaxed cursor-pointer">
+        <label htmlFor="consent" className="text-sm text-slate-400 leading-relaxed cursor-pointer">
           J'accepte que mes données soient utilisées pour traiter ma demande conformément à la{' '}
           <a
             href="/politique-de-confidentialite"
             target="_blank"
-            className="text-brand-600 hover:underline"
+            className="text-brand-400 hover:text-brand-300 hover:underline transition-colors"
           >
             politique de confidentialité
           </a>
           .{' '}
-          <span className="text-red-500" aria-hidden>*</span>
+          <span className="text-red-400" aria-hidden>*</span>
         </label>
       </div>
       {errors.consent && (
-        <p className="mt-1 text-xs text-red-600" role="alert">
+        <p className="mt-1 text-xs text-red-400" role="alert">
           {errors.consent.message}
         </p>
       )}
@@ -315,12 +304,12 @@ export function ContactForm() {
       {/* Error banner */}
       {status === 'error' && (
         <div
-          className="flex items-start gap-3 p-4 bg-red-50 border border-red-200 rounded-xl"
+          className="flex items-start gap-3 p-4 bg-red-500/10 border border-red-500/25 rounded-xl"
           role="alert"
           aria-live="assertive"
         >
-          <AlertCircle className="w-5 h-5 text-red-500 shrink-0 mt-0.5" aria-hidden />
-          <p className="text-sm text-red-700">{errorMessage}</p>
+          <AlertCircle className="w-5 h-5 text-red-400 shrink-0 mt-0.5" aria-hidden />
+          <p className="text-sm text-red-300">{errorMessage}</p>
         </div>
       )}
 
@@ -344,7 +333,7 @@ export function ContactForm() {
         )}
       </Button>
 
-      <p className="text-xs text-slate-400 text-center">
+      <p className="text-xs text-slate-500 text-center">
         Réponse garantie sous 24h ouvrées. Aucun spam.
       </p>
     </form>

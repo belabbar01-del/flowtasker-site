@@ -14,7 +14,7 @@ export function PricingCard({ plan }: PricingCardProps) {
         'relative flex flex-col rounded-2xl p-8 transition-all duration-200',
         plan.highlighted
           ? 'bg-brand-600 text-white shadow-2xl shadow-brand-600/30 scale-[1.02] border border-brand-500'
-          : 'bg-white border border-slate-200 hover:border-brand-200 hover:shadow-md'
+          : 'card-dark hover:border-white/[0.14]'
       )}
       aria-label={`Plan ${plan.name}`}
     >
@@ -27,41 +27,27 @@ export function PricingCard({ plan }: PricingCardProps) {
       )}
 
       <div className="mb-6">
-        <h3
-          className={cn(
-            'text-lg font-bold mb-1',
-            plan.highlighted ? 'text-white' : 'text-slate-900'
-          )}
-        >
+        <h3 className="text-lg font-bold mb-1 text-white">
           {plan.name}
         </h3>
-        <p
-          className={cn(
-            'text-sm leading-relaxed',
-            plan.highlighted ? 'text-brand-100' : 'text-slate-500'
-          )}
-        >
+        <p className={cn(
+          'text-sm leading-relaxed',
+          plan.highlighted ? 'text-brand-100' : 'text-slate-400'
+        )}>
           {plan.description}
         </p>
       </div>
 
       <div className="mb-6">
         <div className="flex items-end gap-1">
-          <span
-            className={cn(
-              'text-4xl font-bold tracking-tight',
-              plan.highlighted ? 'text-white' : 'text-slate-900'
-            )}
-          >
+          <span className="text-4xl font-bold tracking-tight text-white">
             {plan.price}
           </span>
           {plan.period && (
-            <span
-              className={cn(
-                'text-sm mb-1.5',
-                plan.highlighted ? 'text-brand-200' : 'text-slate-400'
-              )}
-            >
+            <span className={cn(
+              'text-sm mb-1.5',
+              plan.highlighted ? 'text-brand-200' : 'text-slate-500'
+            )}>
               {plan.period}
             </span>
           )}
@@ -74,16 +60,14 @@ export function PricingCard({ plan }: PricingCardProps) {
             <Check
               className={cn(
                 'w-4 h-4 mt-0.5 shrink-0',
-                plan.highlighted ? 'text-brand-200' : 'text-brand-600'
+                plan.highlighted ? 'text-brand-200' : 'text-brand-400'
               )}
               aria-hidden="true"
             />
-            <span
-              className={cn(
-                'text-sm',
-                plan.highlighted ? 'text-brand-50' : 'text-slate-600'
-              )}
-            >
+            <span className={cn(
+              'text-sm',
+              plan.highlighted ? 'text-brand-50' : 'text-slate-300'
+            )}>
               {feature}
             </span>
           </li>
@@ -92,7 +76,7 @@ export function PricingCard({ plan }: PricingCardProps) {
 
       <Button
         href="/contact"
-        variant={plan.highlighted ? 'secondary' : 'primary'}
+        variant={plan.highlighted ? 'secondary' : 'outline'}
         size="md"
         className="w-full justify-center"
       >

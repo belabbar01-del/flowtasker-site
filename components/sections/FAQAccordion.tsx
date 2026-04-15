@@ -25,8 +25,8 @@ export function FAQAccordion({ items }: FAQAccordionProps) {
             className={cn(
               'border rounded-2xl overflow-hidden transition-all duration-200',
               isOpen
-                ? 'border-brand-200 shadow-sm'
-                : 'border-slate-200 hover:border-slate-300'
+                ? 'border-brand-500/30'
+                : 'border-white/[0.07] hover:border-white/[0.12]'
             )}
             role="listitem"
           >
@@ -35,14 +35,19 @@ export function FAQAccordion({ items }: FAQAccordionProps) {
               aria-expanded={isOpen}
               aria-controls={panelId}
               onClick={() => setOpenIndex(isOpen ? null : index)}
-              className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left bg-white hover:bg-slate-50 transition-colors"
+              className={cn(
+                'w-full flex items-center justify-between gap-4 px-6 py-5 text-left transition-colors',
+                isOpen
+                  ? 'bg-brand-500/[0.06]'
+                  : 'bg-white/[0.02] hover:bg-white/[0.04]'
+              )}
             >
-              <span className="font-semibold text-slate-900 text-base leading-snug">
+              <span className="font-semibold text-white text-base leading-snug">
                 {item.question}
               </span>
               <ChevronDown
                 className={cn(
-                  'w-5 h-5 text-brand-600 shrink-0 transition-transform duration-300',
+                  'w-5 h-5 text-brand-400 shrink-0 transition-transform duration-300',
                   isOpen && 'rotate-180'
                 )}
                 aria-hidden="true"
@@ -58,9 +63,9 @@ export function FAQAccordion({ items }: FAQAccordionProps) {
                 isOpen ? 'max-h-96' : 'max-h-0'
               )}
             >
-              <div className="px-6 pb-5 bg-white">
-                <div className="border-t border-slate-100 pt-4">
-                  <p className="text-slate-600 leading-relaxed">{item.answer}</p>
+              <div className="px-6 pb-5 bg-white/[0.01]">
+                <div className="border-t border-white/[0.06] pt-4">
+                  <p className="text-slate-400 leading-relaxed">{item.answer}</p>
                 </div>
               </div>
             </div>

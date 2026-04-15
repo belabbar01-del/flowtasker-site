@@ -8,21 +8,10 @@ import { cn } from '@/lib/utils'
 import { NAV_ITEMS } from '@/lib/constants'
 import { Button } from '@/components/ui/Button'
 
-// Pages that don't have a dark hero — navbar must always appear solid
-const LIGHT_BG_PATHS = [
-  '/contact',
-  '/mentions-legales',
-  '/politique-de-confidentialite',
-]
-
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const pathname = usePathname()
-
-  // Force solid state on pages without dark hero backgrounds
-  const forceScrolled = LIGHT_BG_PATHS.some((p) => pathname.startsWith(p))
-  const showScrolled = forceScrolled || isScrolled
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 16)
@@ -30,7 +19,6 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Close menu on route change
   useEffect(() => {
     setIsOpen(false)
   }, [pathname])
@@ -39,30 +27,28 @@ export function Navbar() {
     <header
       className={cn(
         'fixed top-0 inset-x-0 z-50 transition-all duration-300',
-        showScrolled
-          ? 'bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm'
+        isScrolled
+          ? 'bg-[#060b18]/95 backdrop-blur-md border-b border-white/[0.06] shadow-lg shadow-black/30'
           : 'bg-transparent'
       )}
     >
       <div className="container-main">
-        <nav className="flex items-center justify-between h-16 md:h-18" aria-label="Navigation principale">
+        <nav className="flex items-center justify-between h-16 md:h-[4.5rem]" aria-label="Navigation principale">
           {/* Logo */}
           <Link
             href="/"
-            className="flex items-center gap-2 font-bold text-xl text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-600 rounded"
+            className="flex items-center gap-2 font-bold text-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-600 rounded"
             aria-label="Flowtasker — Retour à l'accueil"
           >
             <span className="flex items-center justify-center w-8 h-8 bg-brand-600 rounded-lg">
               <Zap className="w-4 h-4 text-white" strokeWidth={2.5} />
             </span>
-            <span className={cn('transition-colors', showScrolled ? 'text-slate-900' : 'text-white')}>
-              Flowtasker
-            </span>
+            <span className="text-white font-bold">Flowtasker</span>
           </Link>
 
           {/* Desktop nav */}
           <ul className="hidden md:flex items-center gap-1" role="list">
-            {NAV_ITEMS.map((item) => {
+            {NAV_ITEMS.filter((item) => item.href !== '/').map((item) => {
               const isActive = pathname === item.href
               return (
                 <li key={item.href}>
@@ -71,10 +57,8 @@ export function Navbar() {
                     className={cn(
                       'px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200',
                       isActive
-                        ? 'text-brand-600 bg-brand-50'
-                        : showScrolled
-                        ? 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
-                        : 'text-slate-200 hover:text-white hover:bg-white/10'
+                        ? 'text-brand-400 bg-brand-500/10'
+                        : 'text-slate-300 hover:text-white hover:bg-white/[0.06]'
                     )}
                     aria-current={isActive ? 'page' : undefined}
                   >
@@ -87,23 +71,14 @@ export function Navbar() {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-3">
-            <Button
-              href="/contact"
-              size="sm"
-              variant={showScrolled ? 'primary' : 'outline'}
-            >
+            <Button href="/contact" size="sm" variant="primary">
               Audit gratuit
             </Button>
           </div>
 
           {/* Mobile menu button */}
           <button
-            className={cn(
-              'md:hidden p-2 rounded-lg transition-colors',
-              showScrolled
-                ? 'text-slate-600 hover:bg-slate-100'
-                : 'text-white hover:bg-white/10'
-            )}
+            className="md:hidden p-2 rounded-lg text-white hover:bg-white/[0.08] transition-colors"
             onClick={() => setIsOpen(!isOpen)}
             aria-label={isOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
             aria-expanded={isOpen}
@@ -123,8 +98,8 @@ export function Navbar() {
         )}
         aria-hidden={!isOpen}
       >
-        <div className="bg-white border-t border-slate-100 px-4 py-4 space-y-1 shadow-lg">
-          {NAV_ITEMS.map((item) => {
+        <div className="bg-[#060b18] border-t border-white/[0.06] px-4 py-4 space-y-1">
+          {NAV_ITEMS.filter((item) => item.href !== '/').map((item) => {
             const isActive = pathname === item.href
             return (
               <Link
@@ -133,8 +108,8 @@ export function Navbar() {
                 className={cn(
                   'block px-4 py-3 rounded-xl text-sm font-medium transition-colors',
                   isActive
-                    ? 'bg-brand-50 text-brand-600'
-                    : 'text-slate-700 hover:bg-slate-50 hover:text-slate-900'
+                    ? 'bg-brand-500/10 text-brand-400'
+                    : 'text-slate-300 hover:bg-white/[0.06] hover:text-white'
                 )}
                 aria-current={isActive ? 'page' : undefined}
               >
