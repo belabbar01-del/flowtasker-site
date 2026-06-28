@@ -111,7 +111,7 @@ export default function OGImage() {
             fontWeight: '600',
           }}
         >
-          flowtasker.com
+          aiflowtasker.com
         </div>
       </div>
     ),

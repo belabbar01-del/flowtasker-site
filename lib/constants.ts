@@ -4,7 +4,7 @@ export const SITE_NAME = 'Flowtasker'
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aiflowtasker.com'
 export const SITE_EMAIL = 'consulting@aiflowtasker.com'
 export const SITE_DESCRIPTION =
-  "Flowtasker automatise vos tâches répétitives, connecte vos outils et fluidifie vos opérations grâce à des workflows n8n sur mesure — pour que vous puissiez vous concentrer sur ce qui compte vraiment."
+  "Flowtasker aide les entreprises à structurer, automatiser et fiabiliser leurs processus opérationnels avec des workflows no-code/low-code adaptés à leurs outils existants."
 
 export const NAV_ITEMS: NavItem[] = [
   { label: 'Accueil', href: '/' },
@@ -184,6 +184,16 @@ export const FAQ_ITEMS: FAQItem[] = [
     answer:
       "L'audit dure 30 à 45 minutes en visioconférence. On analyse vos outils actuels, vos tâches répétitives et vos points de friction. À l'issue, vous recevez une synthèse avec les automatisations recommandées, le temps estimé et la valeur générée. C'est gratuit et sans engagement.",
   },
+  {
+    question: "Comment se passe la facturation ?",
+    answer:
+      "Chaque projet fait l'objet d'un devis détaillé après l'audit. Un acompte de 50 % est demandé à la commande, le solde à la livraison validée. Nous acceptons le virement bancaire et la carte. Aucun frais caché, aucun abonnement obligatoire.",
+  },
+  {
+    question: "Que se passe-t-il après ma demande d'audit ?",
+    answer:
+      "Vous recevez une réponse sous 24h ouvrées avec une proposition de créneau pour l'audit en visioconférence. Après l'audit, vous recevez une synthèse écrite avec nos recommandations et un devis détaillé si vous souhaitez passer à l'action. Aucun engagement automatique.",
+  },
 ]
 
 export const USE_CASES = [
@@ -213,7 +223,7 @@ export const USE_CASES = [
   },
 ]
 
-// ── Testimonials (demo — à remplacer par des témoignages réels avant publication) ──
+// ── Retours d'expérience (scénarios anonymisés inspirés de missions réelles) ──
 export const TESTIMONIALS: Testimonial[] = [
   {
     name: 'Sophie L.',

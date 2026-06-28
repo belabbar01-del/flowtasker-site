@@ -6,7 +6,6 @@ const LEGAL_ENTITY = 'AIFLOWTASKER LLC'
 export const metadata: Metadata = {
   title: 'Conditions générales de vente',
   description: `Conditions générales de vente et de prestation de services de ${LEGAL_ENTITY} (Flowtasker).`,
-  robots: { index: false, follow: false },
   alternates: { canonical: '/cgv' },
 }
 

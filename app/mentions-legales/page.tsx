@@ -6,7 +6,6 @@ const LEGAL_ENTITY = 'AIFLOWTASKER LLC'
 export const metadata: Metadata = {
   title: 'Mentions légales',
   description: `Mentions légales de ${LEGAL_ENTITY}, éditeur du site Flowtasker.`,
-  robots: { index: false, follow: false },
   alternates: { canonical: '/mentions-legales' },
 }
 
@@ -72,30 +71,29 @@ export default function MentionsLegalesPage() {
               3. Propriété intellectuelle
             </h2>
             <p>
-              L&apos;ensemble du contenu présent sur ce site, incluant notamment les textes, images,
-              graphismes, logos, icônes, éléments visuels, structure, architecture et contenus
-              rédactionnels, est la propriété exclusive de {LEGAL_ENTITY}, sauf mention contraire.
+              L&apos;ensemble des contenus présents sur le site, incluant notamment les textes,
+              éléments graphiques, interfaces, logos, icônes, visuels, structures de pages et
+              éléments de marque, est protégé et appartient à {LEGAL_ENTITY}, sauf mention contraire.
             </p>
             <p className="mt-3">
-              Toute reproduction, représentation, modification, publication, transmission ou
-              exploitation totale ou partielle du site ou de son contenu est interdite sans
-              autorisation écrite préalable de {LEGAL_ENTITY}.
+              Toute reproduction, modification, diffusion, représentation ou exploitation, totale
+              ou partielle, sans autorisation écrite préalable de {LEGAL_ENTITY} est interdite.
             </p>
           </section>
 
           <section aria-labelledby="responsabilite-heading">
             <h2 id="responsabilite-heading" className="text-xl font-semibold text-white mb-4">
-              4. Limitation de responsabilité
+              4. Responsabilité
             </h2>
             <p>
-              {LEGAL_ENTITY} s&apos;efforce d&apos;assurer l&apos;exactitude et la mise à jour des
-              informations publiées sur le site. Toutefois, la société ne peut garantir
-              l&apos;exactitude, la complétude ou l&apos;actualité permanente des informations
-              diffusées.
+              {LEGAL_ENTITY} s&apos;efforce de fournir des informations fiables, claires et
+              régulièrement mises à jour. Toutefois, les informations présentes sur le site sont
+              fournies à titre indicatif et ne constituent pas, à elles seules, un engagement
+              contractuel.
             </p>
             <p className="mt-3">
-              {LEGAL_ENTITY} ne saurait être tenue responsable des erreurs, omissions, interruptions,
-              indisponibilités du site ou des résultats obtenus à la suite de l&apos;utilisation des
+              {LEGAL_ENTITY} ne peut être tenue responsable des erreurs, omissions, interruptions
+              temporaires du site, indisponibilités ou conséquences liées à l&apos;utilisation des
               informations présentes sur le site.
             </p>
           </section>
@@ -105,18 +103,16 @@ export default function MentionsLegalesPage() {
               5. Données personnelles
             </h2>
             <p>
-              Lorsque vous utilisez le formulaire de contact ou demandez un audit gratuit, certaines
-              données personnelles peuvent être collectées, notamment votre nom, votre adresse e-mail,
-              le nom de votre entreprise et le contenu de votre message.
+              Les données transmises via les formulaires du site sont utilisées uniquement pour
+              répondre aux demandes, gérer les échanges commerciaux, préparer les audits gratuits et
+              proposer les services Flowtasker.
             </p>
             <p className="mt-3">
-              Ces données sont utilisées uniquement pour répondre à votre demande, assurer le suivi
-              commercial et proposer les services de Flowtasker. Elles ne sont pas revendues à des
-              tiers.
+              Ces données ne sont pas revendues à des tiers.
             </p>
             <p className="mt-3">
-              Pour toute demande relative à vos données personnelles, vous pouvez nous contacter à
-              l&apos;adresse suivante :{' '}
+              Pour toute demande relative aux données personnelles, l&apos;utilisateur peut
+              contacter :{' '}
               <a href={`mailto:${SITE_EMAIL}`} className="text-brand-400 hover:text-brand-300 hover:underline transition-colors">
                 {SITE_EMAIL}
               </a>

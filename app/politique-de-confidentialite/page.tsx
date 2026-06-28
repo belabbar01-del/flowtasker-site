@@ -6,7 +6,6 @@ const LEGAL_ENTITY = 'AIFLOWTASKER LLC'
 export const metadata: Metadata = {
   title: 'Politique de confidentialité',
   description: `Politique de confidentialité et traitement des données personnelles par ${LEGAL_ENTITY}.`,
-  robots: { index: false, follow: false },
   alternates: { canonical: '/politique-de-confidentialite' },
 }
 

@@ -2,8 +2,5 @@ User-agent: *
 Allow: /
 
 Disallow: /api/
-Disallow: /mentions-legales
-Disallow: /politique-de-confidentialite
-Disallow: /cgv
 
 Sitemap: https://aiflowtasker.com/sitemap.xml

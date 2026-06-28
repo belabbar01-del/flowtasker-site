@@ -141,9 +141,9 @@ export default function HomePage() {
               </h1>
 
               <p className="text-lg md:text-xl text-slate-300 max-w-xl mb-10 leading-relaxed">
-                Nous concevons et déployons des workflows intelligents avec n8n pour éliminer vos
-                tâches répétitives, connecter vos outils et faire tourner votre activité — même
-                quand vous dormez.
+                Nous concevons et déployons des workflows sur mesure avec n8n pour éliminer vos
+                tâches répétitives, connecter vos outils et fiabiliser vos opérations — sans
+                changer votre stack existant.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">

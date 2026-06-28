@@ -66,8 +66,8 @@ export function Footer() {
               {SITE_NAME}
             </Link>
             <p className="text-sm leading-relaxed text-slate-400 mb-6 max-w-xs">
-              Nous automatisons vos processus métier avec n8n pour libérer votre équipe des tâches
-              répétitives et vous permettre de scaler sereinement.
+              Flowtasker aide les entreprises à structurer, automatiser et fiabiliser leurs processus
+              opérationnels avec des workflows no-code/low-code adaptés à leurs outils existants.
             </p>
             <a
               href={`mailto:${SITE_EMAIL}`}

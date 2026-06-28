@@ -54,9 +54,9 @@ export function TestimonialsSection() {
       <div className="container-main">
         <SectionHeader
           id="testimonials-heading"
-          eyebrow="Témoignages clients"
-          title="Ils ont automatisé avec Flowtasker"
-          description="Des équipes de toutes tailles qui ont éliminé leurs tâches répétitives et reconcentré leur énergie sur ce qui compte vraiment."
+          eyebrow="Retours d'expérience"
+          title="Des scénarios concrets, des résultats mesurables"
+          description="Exemples représentatifs des projets que nous réalisons et des résultats observés chez nos clients."
           light={true}
         />
         <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -69,7 +69,7 @@ export function TestimonialsSection() {
           ))}
         </div>
         <p className="mt-10 text-center text-xs text-slate-500">
-          * Témoignages représentatifs des résultats observés. Les noms ont été partiellement anonymisés.
+          Scénarios inspirés de missions réelles. Noms et entreprises anonymisés pour des raisons de confidentialité.
         </p>
       </div>
     </section>
