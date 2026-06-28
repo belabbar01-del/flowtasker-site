@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
 import { SITE_EMAIL } from '@/lib/constants'
 
-const LEGAL_ENTITY = 'Autom8Flow LLC'
+const LEGAL_ENTITY = 'AIFLOWTASKER LLC'
 
 export const metadata: Metadata = {
   title: 'Politique de confidentialité',
-  description: `Politique de confidentialité et traitement des données personnelles de ${LEGAL_ENTITY}.`,
+  description: `Politique de confidentialité et traitement des données personnelles par ${LEGAL_ENTITY}.`,
   robots: { index: false, follow: false },
   alternates: { canonical: '/politique-de-confidentialite' },
 }
@@ -15,18 +15,23 @@ export default function PolitiqueConfidentialitePage() {
     <div className="pt-28 pb-20 md:pt-36 md:pb-28" style={{ background: '#060b18' }}>
       <div className="container-main max-w-3xl mx-auto">
         <h1 className="text-3xl font-bold text-white mb-2">Politique de confidentialité</h1>
-        <p className="text-sm text-slate-500 mb-12">Dernière mise à jour : avril 2025</p>
+        <p className="text-sm text-slate-500 mb-12">Dernière mise à jour : juin 2026</p>
 
         <div className="space-y-10 text-sm text-slate-400 leading-relaxed">
           <section aria-labelledby="intro-heading">
             <h2 id="intro-heading" className="text-xl font-semibold text-white mb-4">
-              1. Introduction
+              1. Responsable du traitement
             </h2>
             <p>
-              {LEGAL_ENTITY} (&ldquo;nous&rdquo;, &ldquo;notre&rdquo;, &ldquo;nos&rdquo;)
-              s&apos;engage à protéger la vie privée des personnes qui utilisent ce site web. Cette
-              politique explique comment nous collectons, utilisons et protégeons vos données
-              personnelles lorsque vous interagissez avec notre site.
+              Le responsable du traitement des données personnelles collectées sur ce site est
+              {' '}{LEGAL_ENTITY}, Limited Liability Company enregistrée aux États-Unis, opérant sous
+              le nom commercial Flowtasker.
+            </p>
+            <p className="mt-3">
+              Pour toute question relative à vos données personnelles, vous pouvez nous contacter à :{' '}
+              <a href={`mailto:${SITE_EMAIL}`} className="text-brand-400 hover:text-brand-300 hover:underline transition-colors">
+                {SITE_EMAIL}
+              </a>
             </p>
           </section>
 
@@ -35,14 +40,22 @@ export default function PolitiqueConfidentialitePage() {
               2. Données collectées
             </h2>
             <p className="mb-3">
-              Nous collectons uniquement les données que vous nous transmettez volontairement, via :
+              Nous collectons uniquement les données que vous nous transmettez volontairement via :
             </p>
             <ul className="list-disc list-inside space-y-2 pl-2 text-slate-400">
               <li>
-                Le formulaire de contact : prénom, nom, email, entreprise, téléphone (optionnel),
-                sujet et message.
+                <strong className="text-slate-300">Le formulaire de contact :</strong> prénom, nom,
+                adresse e-mail, nom de l&apos;entreprise (optionnel), numéro de téléphone (optionnel),
+                sujet et contenu du message.
               </li>
-              <li>Les échanges par email : données contenues dans votre correspondance.</li>
+              <li>
+                <strong className="text-slate-300">Les demandes d&apos;audit gratuit :</strong> mêmes
+                informations que le formulaire de contact.
+              </li>
+              <li>
+                <strong className="text-slate-300">Les échanges par email :</strong> les données
+                contenues dans votre correspondance.
+              </li>
             </ul>
             <p className="mt-3">
               Nous ne collectons pas de données de navigation, n&apos;utilisons pas de cookies de
@@ -56,13 +69,17 @@ export default function PolitiqueConfidentialitePage() {
             </h2>
             <p>Vos données sont utilisées exclusivement pour :</p>
             <ul className="list-disc list-inside space-y-2 pl-2 mt-3 text-slate-400">
-              <li>Répondre à votre demande de contact ou d&apos;audit</li>
-              <li>Établir un devis ou une proposition commerciale</li>
+              <li>Répondre à votre demande de contact ou d&apos;audit gratuit</li>
+              <li>Établir un devis ou une proposition commerciale personnalisée</li>
               <li>Assurer le suivi de notre relation commerciale</li>
+              <li>Proposer les services de Flowtasker adaptés à vos besoins</li>
             </ul>
             <p className="mt-3">
-              <strong className="text-slate-300">Base légale :</strong> consentement (formulaire de contact) et intérêt
-              légitime (suivi commercial).
+              <strong className="text-slate-300">Vos données ne sont jamais revendues à des tiers.</strong>
+            </p>
+            <p className="mt-3">
+              <strong className="text-slate-300">Base légale :</strong> consentement (formulaire de
+              contact) et intérêt légitime (suivi commercial et proposition de services).
             </p>
           </section>
 
@@ -73,7 +90,7 @@ export default function PolitiqueConfidentialitePage() {
             <p>
               Vos données de contact sont conservées pendant 3 ans à compter du dernier échange,
               puis supprimées. Les données liées à une relation contractuelle sont conservées
-              conformément aux obligations légales applicables (généralement 5 à 10 ans).
+              conformément aux obligations légales applicables.
             </p>
           </section>
 
@@ -83,9 +100,10 @@ export default function PolitiqueConfidentialitePage() {
             </h2>
             <p>
               Nous ne vendons, ne louons et ne partageons vos données personnelles avec aucun tiers
-              à des fins commerciales. Vos données peuvent être transmises à des prestataires
-              techniques strictement nécessaires à notre activité (ex : hébergeur email) sous des
-              conditions de confidentialité équivalentes aux nôtres.
+              à des fins commerciales. Vos données peuvent être transmises uniquement à des
+              prestataires techniques strictement nécessaires à notre activité (hébergeur, service
+              d&apos;envoi d&apos;emails) sous des conditions de confidentialité équivalentes aux
+              nôtres.
             </p>
           </section>
 
@@ -141,8 +159,8 @@ export default function PolitiqueConfidentialitePage() {
               9. Contact & réclamations
             </h2>
             <p>
-              Pour toute question relative à cette politique ou pour exercer vos droits, contactez
-              notre responsable de traitement à :{' '}
+              Pour toute question relative à cette politique ou pour exercer vos droits, contactez-nous
+              à :{' '}
               <a href={`mailto:${SITE_EMAIL}`} className="text-brand-400 hover:text-brand-300 hover:underline transition-colors">
                 {SITE_EMAIL}
               </a>

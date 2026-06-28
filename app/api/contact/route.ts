@@ -75,7 +75,7 @@ async function sendContactEmail(data: z.infer<typeof contactSchema>): Promise<vo
     to: destination,
     subject: `[Flowtasker] ${data.subject} — ${fullName}`,
     text: `
-Nouvelle demande via flowtasker.com
+Nouvelle demande via aiflowtasker.com
 
 Nom       : ${fullName}
 Email     : ${data.email}${companyLine}${phoneLine}
@@ -104,7 +104,7 @@ ${data.message}
     <p style="color:#64748b;margin:0 0 8px 0;font-size:13px;text-transform:uppercase;letter-spacing:.05em">Message</p>
     <p style="margin:0;line-height:1.7;white-space:pre-wrap">${data.message.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</p>
   </div>
-  <p style="color:#94a3b8;font-size:12px;text-align:center;margin-top:16px">flowtasker.com — Automatisation business avec n8n</p>
+  <p style="color:#94a3b8;font-size:12px;text-align:center;margin-top:16px">aiflowtasker.com — Automatisation business avec n8n</p>
 </body>
 </html>
     `.trim(),

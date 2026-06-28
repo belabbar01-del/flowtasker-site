@@ -62,7 +62,7 @@ const organizationJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: SITE_NAME,
-  legalName: 'Autom8Flow LLC',
+  legalName: 'AIFLOWTASKER LLC',
   url: SITE_URL,
   email: SITE_EMAIL,
   description: SITE_DESCRIPTION,

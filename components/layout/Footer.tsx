@@ -14,6 +14,7 @@ const FOOTER_LINKS = {
     { label: 'Contact', href: '/contact' },
     { label: 'Mentions légales', href: '/mentions-legales' },
     { label: 'Politique de confidentialité', href: '/politique-de-confidentialite' },
+    { label: 'CGV', href: '/cgv' },
   ],
 }
 
@@ -147,6 +148,9 @@ export function Footer() {
             </Link>
             <Link href="/politique-de-confidentialite" className="hover:text-slate-400 transition-colors">
               Confidentialité
+            </Link>
+            <Link href="/cgv" className="hover:text-slate-400 transition-colors">
+              CGV
             </Link>
           </div>
         </div>
