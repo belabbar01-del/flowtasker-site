@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Zap, Mail, ArrowRight } from 'lucide-react'
+import { Zap, Mail, Phone, MapPin, ArrowRight } from 'lucide-react'
 import { SITE_NAME, SITE_EMAIL } from '@/lib/constants'
 
 const FOOTER_LINKS = {
@@ -65,18 +65,35 @@ export function Footer() {
               </span>
               {SITE_NAME}
             </Link>
-            <p className="text-sm leading-relaxed text-slate-400 mb-6 max-w-xs">
+            <p className="text-sm font-medium text-slate-300 mb-1">AIFLOWTASKER LLC</p>
+            <p className="text-sm leading-relaxed text-slate-400 mb-5 max-w-xs">
               Flowtasker aide les entreprises à structurer, automatiser et fiabiliser leurs processus
               opérationnels avec des workflows no-code/low-code adaptés à leurs outils existants.
             </p>
-            <a
-              href={`mailto:${SITE_EMAIL}`}
-              className="inline-flex items-center gap-1.5 text-sm text-slate-400 hover:text-white transition-colors"
-              aria-label="Envoyer un email"
-            >
-              <Mail className="w-4 h-4" />
-              {SITE_EMAIL}
-            </a>
+            <div className="space-y-2.5">
+              <a
+                href={`mailto:${SITE_EMAIL}`}
+                className="flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors"
+              >
+                <Mail className="w-4 h-4 shrink-0" />
+                {SITE_EMAIL}
+              </a>
+              <a
+                href="tel:+15172801122"
+                className="flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors"
+              >
+                <Phone className="w-4 h-4 shrink-0" />
+                +1 (517) 280-1122
+              </a>
+              <div className="flex items-start gap-2 text-sm text-slate-400">
+                <MapPin className="w-4 h-4 shrink-0 mt-0.5" />
+                <address className="not-italic leading-relaxed">
+                  30 N Gould St, Ste R<br />
+                  Sheridan, WY 82801<br />
+                  United States
+                </address>
+              </div>
+            </div>
           </div>
 
           {/* Produit */}

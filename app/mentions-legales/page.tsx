@@ -30,6 +30,15 @@ export default function MentionsLegalesPage() {
               <p><strong className="text-slate-300">Forme juridique :</strong> Limited Liability Company (LLC)</p>
               <p><strong className="text-slate-300">Pays d&apos;enregistrement :</strong> États-Unis</p>
               <p>
+                <strong className="text-slate-300">Adresse :</strong> 30 N Gould St, Ste R, Sheridan, WY 82801, United States
+              </p>
+              <p>
+                <strong className="text-slate-300">Téléphone :</strong>{' '}
+                <a href="tel:+15172801122" className="text-brand-400 hover:text-brand-300 hover:underline transition-colors">
+                  +1 (517) 280-1122
+                </a>
+              </p>
+              <p>
                 <strong className="text-slate-300">Email de contact :</strong>{' '}
                 <a href={`mailto:${SITE_EMAIL}`} className="text-brand-400 hover:text-brand-300 hover:underline transition-colors">
                   {SITE_EMAIL}
@@ -42,12 +51,6 @@ export default function MentionsLegalesPage() {
                 </a>
               </p>
             </div>
-            <p className="mt-4">
-              L&apos;adresse postale de la société peut être communiquée sur demande légitime adressée à{' '}
-              <a href={`mailto:${SITE_EMAIL}`} className="text-brand-400 hover:text-brand-300 hover:underline transition-colors">
-                {SITE_EMAIL}
-              </a>.
-            </p>
           </section>
 
           <section aria-labelledby="hebergement-heading">
