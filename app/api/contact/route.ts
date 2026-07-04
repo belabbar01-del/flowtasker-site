@@ -40,10 +40,10 @@ async function sendContactEmail(data: z.infer<typeof contactSchema>): Promise<vo
   const smtpHost = process.env.SMTP_HOST
   const smtpUser = process.env.SMTP_USER
   const smtpPass = process.env.SMTP_PASS
-  const smtpPort = Number(process.env.SMTP_PORT ?? 465)
+  const smtpPort = Number(process.env.SMTP_PORT ?? 587)
+  const fromEmail = process.env.FROM_EMAIL ?? smtpUser
 
   if (!destination || !smtpHost || !smtpUser || !smtpPass) {
-    // Dev environment: log and continue
     console.warn(
       '[contact] Email env vars not configured. Configure SMTP_HOST, SMTP_USER, SMTP_PASS, CONTACT_DESTINATION_EMAIL in .env.local'
     )
@@ -55,14 +55,18 @@ async function sendContactEmail(data: z.infer<typeof contactSchema>): Promise<vo
     return
   }
 
-  // Dynamically import nodemailer to avoid bundling in edge runtimes
   const nodemailer = await import('nodemailer')
 
+  const isImplicitTLS = smtpPort === 465
   const transporter = nodemailer.createTransport({
     host: smtpHost,
     port: smtpPort,
-    secure: smtpPort === 465,
+    secure: isImplicitTLS,
+    ...(!isImplicitTLS && { requireTLS: true }),
     auth: { user: smtpUser, pass: smtpPass },
+    connectionTimeout: 8_000,
+    greetingTimeout: 8_000,
+    socketTimeout: 10_000,
   })
 
   const fullName = `${data.firstName} ${data.lastName}`
@@ -70,7 +74,7 @@ async function sendContactEmail(data: z.infer<typeof contactSchema>): Promise<vo
   const phoneLine = data.phone ? `\nTéléphone : ${data.phone}` : ''
 
   await transporter.sendMail({
-    from: `"${fullName}" <${smtpUser}>`,
+    from: `"Flowtasker" <${fromEmail}>`,
     replyTo: data.email,
     to: destination,
     subject: `[Flowtasker] ${data.subject} — ${fullName}`,
@@ -143,9 +147,17 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
   try {
     await sendContactEmail(result.data)
   } catch (err) {
-    console.error('[contact] Failed to send email:', err)
+    const smtpError = err instanceof Error ? err.message : String(err)
+    console.error('[contact] Failed to send email:', {
+      error: smtpError,
+      host: process.env.SMTP_HOST,
+      port: process.env.SMTP_PORT,
+      user: process.env.SMTP_USER ? '***configured***' : 'MISSING',
+      pass: process.env.SMTP_PASS ? '***configured***' : 'MISSING',
+      dest: process.env.CONTACT_DESTINATION_EMAIL ? '***configured***' : 'MISSING',
+    })
     return NextResponse.json(
-      { message: "Erreur lors de l\'envoi. Veuillez réessayer ultérieurement." },
+      { message: "Erreur lors de l'envoi. Veuillez réessayer ultérieurement." },
       { status: 500 }
     )
   }
